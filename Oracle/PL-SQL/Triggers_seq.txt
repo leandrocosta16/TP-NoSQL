@@ -1,0 +1,122 @@
+CREATE OR REPLACE TRIGGER ins_film
+AFTER INSERT ON film
+FOR EACH ROW
+BEGIN
+    INSERT INTO film_text VALUES (:new.film_id, :new.title, :new.description);
+END;
+
+
+CREATE OR REPLACE TRIGGER upd_film 
+AFTER UPDATE ON film
+FOR EACH ROW BEGIN
+    IF (:old.title != :new.title) 
+        OR (:old.description != :new.description) 
+        OR (:old.film_id != :new.film_id)
+    THEN
+        UPDATE film_text SET title= :new.title, description=:new.description, film_id=:new.film_id WHERE film_id=:old.film_id;
+    END IF;
+END;
+
+
+CREATE OR REPLACE TRIGGER del_film 
+AFTER DELETE ON film 
+FOR EACH ROW BEGIN
+    DELETE FROM film_text WHERE film_id = :old.film_id;
+END;
+
+
+CREATE OR REPLACE TRIGGER actor_sequence
+BEFORE INSERT ON ACTOR
+FOR EACH ROW
+BEGIN
+SELECT actor_sequence.nextval into :new.actor_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER address_sequence
+BEFORE INSERT ON ADDRESS
+FOR EACH ROW
+BEGIN
+SELECT address_sequence.nextval into :new.address_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER category_sequence
+BEFORE INSERT ON CATEGORY
+FOR EACH ROW
+BEGIN
+SELECT category_sequence.nextval into :new.category_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER city_sequence
+BEFORE INSERT ON CITY
+FOR EACH ROW
+BEGIN
+SELECT city_sequence.nextval into :new.city_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER country_sequence
+BEFORE INSERT ON COUNTRY
+FOR EACH ROW
+BEGIN
+SELECT country_sequence.nextval into :new.country_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER customer_sequence
+BEFORE INSERT ON CUSTOMER
+FOR EACH ROW
+BEGIN
+SELECT customer_sequence.nextval into :new.customer_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER film_sequence
+BEFORE INSERT ON FILM
+FOR EACH ROW
+BEGIN
+SELECT film_sequence.nextval into :new.film_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER inventory_sequence
+BEFORE INSERT ON INVENTORY
+FOR EACH ROW
+BEGIN
+SELECT inventory_sequence.nextval into :new.inventory_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER language_sequence
+BEFORE INSERT ON LANGUAGE
+FOR EACH ROW
+BEGIN
+SELECT language_sequence.nextval into :new.language_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER payment_sequence
+BEFORE INSERT ON PAYMENT
+FOR EACH ROW
+BEGIN
+SELECT payment_sequence.nextval into :new.payment_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER rental_sequence
+BEFORE INSERT ON RENTAL
+FOR EACH ROW
+BEGIN
+SELECT rental_sequence.nextval into :new.rental_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER staff_sequence
+BEFORE INSERT ON STAFF
+FOR EACH ROW
+BEGIN
+SELECT staff_sequence.nextval into :new.staff_id from dual;
+END;
+
+CREATE OR REPLACE TRIGGER store_sequence
+BEFORE INSERT ON STORE
+FOR EACH ROW
+BEGIN
+SELECT store_sequence.nextval into :new.store_id from dual;
+END;
+
+
+
+
+

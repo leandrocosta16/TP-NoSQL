@@ -1,0 +1,27 @@
+CREATE  INDEX idx_actor_last_name ON actor(last_name);
+CREATE  INDEX idx_fk_country_id ON city(country_id);
+CREATE  INDEX idx_fk_city_id ON address(city_id);
+CREATE  INDEX idx_customer_fk_store_id ON customer(store_id);
+CREATE  INDEX idx_customer_fk_address_id ON customer(address_id);
+CREATE  INDEX idx_customer_last_name ON customer(last_name);
+CREATE  INDEX idx_fk_language_id ON film(language_id);
+CREATE  INDEX idx_fk_original_language_id ON film(original_language_id);
+CREATE  INDEX idx_fk_film_actor_film ON film_actor(film_id);
+CREATE  INDEX idx_fk_film_actor_actor ON film_actor(actor_id);
+CREATE  INDEX idx_fk_film_category_film ON film_category(film_id);
+CREATE  INDEX idx_fk_film_category_category ON film_category(category_id);
+CREATE  INDEX idx_fk_film_id ON inventory(film_id);
+CREATE  INDEX idx_fk_film_id_store_id ON inventory(store_id,film_id);
+CREATE  INDEX idx_fk_staff_store_id ON staff(store_id);
+CREATE  INDEX idx_fk_staff_address_id ON staff(address_id);
+CREATE  INDEX idx_store_fk_manager_staff_id ON store(manager_staff_id);
+CREATE  INDEX idx_fk_store_address ON store(address_id);
+CREATE  INDEX idx_fk_staff_id ON payment(staff_id);
+CREATE  INDEX idx_fk_customer_id ON payment(customer_id);
+CREATE INDEX idx_rental_fk_inventory_id ON rental(inventory_id);
+CREATE INDEX idx_rental_fk_customer_id ON rental(customer_id);
+CREATE INDEX idx_rental_fk_staff_id ON rental(staff_id);
+CREATE UNIQUE INDEX   idx_rental_uq  ON rental (rental_date,inventory_id,customer_id);
+
+
+

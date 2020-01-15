@@ -1,0 +1,17 @@
+DROP TABLE payment cascade constraints;
+DROP TABLE rental cascade constraints;
+DROP TABLE customer cascade constraints;
+DROP TABLE film_category cascade constraints;
+DROP TABLE film_text cascade constraints;
+DROP TABLE film_actor cascade constraints;
+DROP TABLE inventory cascade constraints;
+DROP TABLE film cascade constraints;
+DROP TABLE category cascade constraints;
+DROP TABLE staff cascade constraints;
+DROP TABLE store cascade constraints;
+DROP TABLE actor cascade constraints;
+DROP TABLE address cascade constraints;
+DROP TABLE city cascade constraints;
+DROP TABLE country cascade constraints;
+DROP TABLE language cascade constraints;
+
